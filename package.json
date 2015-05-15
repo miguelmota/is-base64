@@ -1,0 +1,29 @@
+{
+  "name": "is-base64",
+  "version": "0.0.1",
+  "description": "Predicate that returns true if base64 string.",
+  "main": "is-base64.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguelmota/is-base64"
+  },
+  "keywords": [
+    "predicate",
+    "base64"
+  ],
+  "author": "Miguel Mota <hello@miguelmota.com> (http://www.miguelmota.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miguelmota/is-base64/issues"
+  },
+  "homepage": "https://github.com/miguelmota/is-base64",
+  "dependencies": {
+    "tape": "^3.0.3"
+  }
+}
