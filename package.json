@@ -23,7 +23,7 @@
     "url": "https://github.com/miguelmota/is-base64/issues"
   },
   "homepage": "https://github.com/miguelmota/is-base64",
-  "dependencies": {
+  "devDependencies": {
     "tape": "^3.0.3"
   }
 }
