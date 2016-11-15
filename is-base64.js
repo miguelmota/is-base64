@@ -2,8 +2,8 @@
   'use strict';
 
   function isBase64(v) {
-    var re = /^(data:\w+\/\w+;base64,)?([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/gi;
-    return re.test(v);
+    var regex = /^(data:\w+\/[a-zA-Z\+\-\.]+;base64,)?([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/gi;
+    return regex.test(v);
   }
 
   if (typeof exports !== 'undefined') {
