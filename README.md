@@ -26,6 +26,7 @@ console.log(isBase64('dfasdfr342')); // false
 console.log(isBase64('uuLMhh==')); // true
 console.log(isBase64('uuLMhh')); // false
 console.log(isBase64('uuLMhh', {paddingRequired: false})); // true
+console.log(isBase64('')); // true
 ```
 
 # API
