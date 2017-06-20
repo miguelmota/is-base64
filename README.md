@@ -35,7 +35,7 @@ console.log(isBase64('uuLMhh', {paddingRequired: false})); // true
 - {string} string - string to check if is valid base64 string
 
 - {object} [options]
-    - [options.paddingRequired] {boolean} - check for padding
+    - [options.paddingRequired=true] {boolean} - check for padding
 
 # License
 
