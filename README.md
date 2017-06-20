@@ -10,10 +10,6 @@ Predicate that returns true if base64 string.
 npm install is-base64
 ```
 
-```bash
-bower install is-base64
-```
-
 # Usage
 
 ```javascript
@@ -27,7 +23,19 @@ console.log(isBase64(stringWithMime)); // true
 console.log(isBase64('1342234')); // false
 console.log(isBase64('afQ$%rfew')); // false
 console.log(isBase64('dfasdfr342')); // false
+console.log(isBase64('uuLMhh==')); // true
+console.log(isBase64('uuLMhh')); // false
+console.log(isBase64('uuLMhh', {paddingRequired: false})); // true
 ```
+
+# API
+
+## isBase64(string, options)
+
+- {string} string - string to check if is valid base64 string
+
+- {object} [options]
+    - [options.paddingRequired] {boolean} - check for padding
 
 # License
 

@@ -1,8 +1,17 @@
 (function(root) {
   'use strict';
 
-  function isBase64(v) {
-    var regex = /^(data:\w+\/[a-zA-Z\+\-\.]+;base64,)?([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/gi;
+  function isBase64(v, opts) {
+    if (!(opts instanceof Object)) {
+      opts = {}
+    }
+
+    var regex = /^(data:\w+\/[a-zA-Z\+\-\.]+;base64,)?(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/gi;
+
+    if (opts.paddingRequired === false) {
+      regex = /^(data:\w+\/[a-zA-Z\+\-\.]+;base64,)?(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}(==)?|[A-Za-z0-9+\/]{3}=?)?$/gi;
+    }
+
     return regex.test(v);
   }
 
