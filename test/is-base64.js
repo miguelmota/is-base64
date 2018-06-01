@@ -2,9 +2,7 @@ var test = require('tape');
 var isBase64 = require('../is-base64');
 
 test('isBase64', function (t) {
-  t.plan(18);
-
-  t.equal(isBase64(''), true);
+  t.plan(19);
 
   var pngString = 'iVBORw0KGgoAAAANSUhEUgAABQAAAALQAQMAAAD1s08VAAAAA1BMVEX/AAAZ4gk3AAAAh0lEQVR42u3BMQEAAADCoPVPbQlPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4GsTfAAGc95RKAAAAAElFTkSuQmCC';
   var pngStringWithMime = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQAQMAAAD1s08VAAAAA1BMVEX/AAAZ4gk3AAAAh0lEQVR42u3BMQEAAADCoPVPbQlPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4GsTfAAGc95RKAAAAAElFTkSuQmCC';
@@ -36,4 +34,6 @@ test('isBase64', function (t) {
   t.equal(isBase64('uuLMhh=='), true);
   t.equal(isBase64('uuLMhh==', {paddingRequired: false}), true);
   t.equal(isBase64('uuLMhh==', {paddingRequired: true}), true);
+  t.equal(isBase64(''), true);
+  t.equal(isBase64('', {allowBlank: false}), false);
 });

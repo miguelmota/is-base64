@@ -5,6 +5,9 @@
     if (!(opts instanceof Object)) {
       opts = {}
     }
+    if (opts.hasOwnProperty('allowBlank') && !opts.allowBlank && v === '') {
+      return false
+    }
 
     var regex = /^(data:\w+\/[a-zA-Z\+\-\.]+;base64,)?(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/gi;
 
