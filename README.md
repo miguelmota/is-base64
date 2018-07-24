@@ -1,8 +1,6 @@
 # is-base64
 
-Predicate that returns true if base64 string.
-
-[![NPM](https://nodei.co/npm/is-base64.png)](https://nodei.co/npm/is-base64)
+> Predicate that returns true if base64 string.
 
 # Install
 

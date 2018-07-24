@@ -2,6 +2,9 @@
   'use strict';
 
   function isBase64(v, opts) {
+    if (v instanceof Boolean || typeof v === 'boolean') {
+      return false
+    }
     if (!(opts instanceof Object)) {
       opts = {}
     }
