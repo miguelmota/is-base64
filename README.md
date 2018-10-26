@@ -17,7 +17,8 @@ var string = 'iVBORw0KGgoAAAAN ... kSuQmCC';
 var stringWithMime = 'data:image/png;base64,iVBORw0KGgoAAAA ... AAElFTkSuQmCC';
 
 console.log(isBase64(string)); // true
-console.log(isBase64(stringWithMime)); // true
+console.log(isBase64(stringWithMime)); // false
+console.log(isBase64(stringWithMime, {mime: true})); // true
 console.log(isBase64('1342234')); // false
 console.log(isBase64('afQ$%rfew')); // false
 console.log(isBase64('dfasdfr342')); // false
@@ -36,6 +37,8 @@ console.log(isBase64('', {allowBlank: false})); // false
 
 - {object} [options]
     - [options.paddingRequired=true] {boolean} - check for padding
+    - [options.mime=false] {boolean} - returns true for valid strings with mime
+    - [options.allowBlank=true] {boolean} - returns true for empty string
 
 # License
 
