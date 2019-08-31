@@ -2,7 +2,7 @@ var test = require('tape');
 var isBase64 = require('../is-base64');
 
 test('isBase64', function (t) {
-  t.plan(25);
+  t.plan(27);
 
   var pngString = 'iVBORw0KGgoAAAANSUhEUgAABQAAAALQAQMAAAD1s08VAAAAA1BMVEX/AAAZ4gk3AAAAh0lEQVR42u3BMQEAAADCoPVPbQlPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4GsTfAAGc95RKAAAAAElFTkSuQmCC';
   var pngStringWithMime = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQAQMAAAD1s08VAAAAA1BMVEX/AAAZ4gk3AAAAh0lEQVR42u3BMQEAAADCoPVPbQlPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4GsTfAAGc95RKAAAAAElFTkSuQmCC';
@@ -12,20 +12,22 @@ test('isBase64', function (t) {
   // Test agains real images
   t.equal(isBase64(pngString), true);
   t.equal(isBase64(pngStringWithMime), false);
-  t.equal(isBase64(pngStringWithMime, {mime: true}), true);
+  t.equal(isBase64(pngStringWithMime, {allowMime: true}), true);
+  t.equal(isBase64(pngString, {mimeRequired: true}), false);
+  t.equal(isBase64(pngStringWithMime, {mimeRequired: true}), true);
   t.equal(isBase64(jpgString), true);
   t.equal(isBase64(jpgStringWithMime), false);
-  t.equal(isBase64(jpgStringWithMime, {mime: true}), true);
+  t.equal(isBase64(jpgStringWithMime, {allowMime: true}), true);
 
   // helper for creating fake valid mime strings
   const createMimeString = (mime) => `data:${mime};base64,${pngString}`;
 
   // Random complex mime types taken from:
   // http://www.freeformatter.com/mime-types-list.html
-  t.equal(isBase64(createMimeString('application/vnd.apple.installer+xml'), {mime: true}), true);
-  t.equal(isBase64(createMimeString('image/svg+xml'), {mime: true}), true);
-  t.equal(isBase64(createMimeString('application/set-payment-initiation'), {mime: true}), true);
-  t.equal(isBase64(createMimeString('image/vnd.adobe.photoshop'), {mime: true}), true);
+  t.equal(isBase64(createMimeString('application/vnd.apple.installer+xml'), {allowMime: true}), true);
+  t.equal(isBase64(createMimeString('image/svg+xml'), {allowMime: true}), true);
+  t.equal(isBase64(createMimeString('application/set-payment-initiation'), {allowMime: true}), true);
+  t.equal(isBase64(createMimeString('image/vnd.adobe.photoshop'), {allowMime: true}), true);
 
   t.equal(isBase64('1342234'), false);
   t.equal(isBase64('afQ$%rfew'), false);
@@ -37,9 +39,9 @@ test('isBase64', function (t) {
   t.equal(isBase64('uuLMhh==', {paddingRequired: false}), true);
   t.equal(isBase64('uuLMhh==', {paddingRequired: true}), true);
   t.equal(isBase64('data:image/png;base64,uuLMhh==', {paddingRequired: true}), false);
-  t.equal(isBase64('data:image/png;base64,uuLMhh==', {paddingRequired: true, mime: true}), true);
+  t.equal(isBase64('data:image/png;base64,uuLMhh==', {paddingRequired: true, allowMime: true}), true);
   t.equal(isBase64(''), true);
-  t.equal(isBase64('', {allowBlank: false}), false);
+  t.equal(isBase64('', {allowEmpty: false}), false);
   t.equal(isBase64(false), false);
   t.equal(isBase64(true), false);
-});
+})
