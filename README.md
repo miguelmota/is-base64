@@ -43,6 +43,28 @@ console.log(isBase64('', {allowEmpty: false})); // false
     - [options.mimeRequired=false] {boolean} - returns true for valid strings with mime
     - [options.paddingRequired=true] {boolean} - returns true for valid strings with valid padding
 
+## CLI
+
+Install CLI:
+
+```bash
+npm install -g is-base64
+```
+
+CLI example:
+
+```bash
+$ is-base64 aGVsbG8gd29ybGQ=
+true
+```
+
+Piping example:
+
+```bash
+$ echo aGVsbG8gd29ybGQ= | is-base64
+true
+```
+
 ## FAQ
 
 - Q: Why is empty string `""` a valid base64 string by default?

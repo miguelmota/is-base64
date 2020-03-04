@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+const isBase64 = require('..')
+
+if (process.stdin) {
+  process.stdin.setEncoding('utf8')
+  process.stdin.resume()
+  var content = ''
+  process.stdin.on('data', (buf) => {
+    content += buf.toString()
+  })
+  setTimeout(() => {
+    run(content)
+    process.exit(0)
+  }, 10)
+} else {
+  run()
+}
+
+function run (input) {
+  if (!input && process.argv.length > 1) {
+    input = process.argv[2]
+  }
+
+  input = (input || '').trim()
+
+  if (!input) {
+    console.error('Input is required')
+    process.exit(1)
+  }
+
+  const valid = isBase64(input)
+
+  console.log(valid)
+  process.exit(valid ? 0 : 1)
+}

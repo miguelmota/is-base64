@@ -1,10 +1,11 @@
 {
   "name": "is-base64",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Predicate that returns true if base64 string.",
   "main": "is-base64.js",
-  "directories": {
-    "test": "test"
+  "bin": {
+    "is-base64": "bin/is-base64",
+    "is_base64": "bin/is-base64"
   },
   "scripts": {
     "test": "tape test/*.js"
